@@ -6,7 +6,7 @@ required:
  - repo
 
 toolchain:
-  name: SwiftforBackendforFrontendAPIRTCNC
+  name: SwiftforBackendfor-{{timestamp}}
 
 # Github repos
 repo:
