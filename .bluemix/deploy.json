@@ -1,47 +1,44 @@
 {
 "$schema": "http://json-schema.org/draft-04/schema#",
-"title": "Sample Deploy Stage",
-"longDescription": "The Delivery Pipeline automates continuous deployment.",
+"messages": {
+"$i18n": "locales.yml"
+},
+"title": {
+"$ref": "#/messages/deploy.title"
+},
+"description": {
+"$ref": "#/messages/deploy.description"
+},
+"longDescription": {
+"$ref": "#/messages/deploy.longDescription"
+},
 "type": "object",
 "properties": {
-"api-key": {
-"description": "The IBM Cloud API key is used to access the IBM Container Service API and interact with the cluster. You can obtain your API key with 'bx iam api-key-create' or via the console at https://console.bluemix.net/iam/#/apikeys by clicking **Create API key** (Each API key only can be viewed once).",
+"prod-region": {
+"description": "The bluemix region",
 "type": "string"
 },
-"image-registry-token": {
-"description": "Container Registry access token. Retrievable via [bx cr tokens]",
+"prod-organization": {
+"description": "The bluemix org",
 "type": "string"
 },
-"kube-cluster-name": {
-"description": "Your cluster name. Retrieve it with [bx cs clusters] or via the console at https://console.bluemix.net/containers-kubernetes/home/clusters.",
+"prod-space": {
+"description": "The bluemix space",
 "type": "string"
 },
-"dev-region": {
-"description": "The IBM Cloud region",
-"type": "string"
+"prod-app-name": {
+"description": {
+"$ref": "#/messages/deploy.appDescription"
 },
-"dev-organization": {
-"description": "The IBM Cloud org",
-"type": "string"
-},
-"dev-space": {
-"description": "The IBM Cloud space",
-"type": "string"
-},
-"app-name": {
-"description": "app name",
-"type": "string"
+"type": "string",
+"pattern": "\\S"
 }
 },
 "required": [
-"dev-region",
-"dev-organization",
-"dev-space",
-"app-name",
-"api-key",
-"image-registry-token",
-"image-pull-secret-name",
-"kube-cluster-name"
+"prod-region",
+"prod-organization",
+"prod-space",
+"prod-app-name"
 ],
 "form": [
 {
@@ -49,33 +46,18 @@
 "url": "/devops/setup/bm-helper/helper.html"
 },
 {
-"type": "password",
-"readonly": false,
-"title": "IBM Cloud API Key",
-"key": "api-key"
-},
-{
-"type": "password",
-"readonly": false,
-"title": "Container Registry access token",
-"key": "image-registry-token"
-},
-{
 "type": "text",
 "readonly": false,
-"title": "Kubernetes Cluster Name",
-"key": "kube-cluster-name"
+"title": {
+"$ref": "#/messages/deploy.appName"
 },
-{
-"type": "text",
-"readonly": false,
-"title": "App Name",
-"key": "app-name"
+"key": "prod-app-name"
 },
 {
 "type": "table",
-"columnCount": 3,
+"columnCount": 4,
 "widths": [
+"15%",
 "28%",
 "28%",
 "28%"
@@ -83,27 +65,43 @@
 "items": [
 {
 "type": "label",
-"title": "Region"
+"title": ""
 },
 {
 "type": "label",
-"title": "Organization"
+"title": {
+"$ref": "#/messages/region"
+}
 },
 {
 "type": "label",
-"title": "Space"
+"title": {
+"$ref": "#/messages/organization"
+}
+},
+{
+"type": "label",
+"title": {
+"$ref": "#/messages/space"
+}
+},
+{
+"type": "label",
+"title": {
+"$ref": "#/messages/prodStage"
+}
 },
 {
 "type": "select",
-"key": "dev-region"
+"key": "prod-region"
 },
 {
 "type": "select",
-"key": "dev-organization"
+"key": "prod-organization"
 },
 {
 "type": "select",
-"key": "dev-space",
+"key": "prod-space",
 "readonly": false
 }
 ]
