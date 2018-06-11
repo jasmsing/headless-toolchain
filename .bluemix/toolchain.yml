@@ -32,7 +32,6 @@ services:
       enable_traceability: true
   sample-build:
     service_id: pipeline
-    hidden ["form"]
     parameters:
       services:
         - sample-repo
